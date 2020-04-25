@@ -1,0 +1,65 @@
+<!-- <input type="email" [(ngModel)]="txtSignUpUser" placeholder="Email" />
+<button (click)="addUser()">Sign Up</button>
+<button (click)="logoutUser()">Logout</button>
+<h3>{{ message }}</h3>
+
+<h1 *ngIf="currentUser?.email">Hello, {{ currentUser.email }}</h1>
+
+<input type="text" [(ngModel)]="txtTodo" />
+<button (click)="addTodoForUser()">Add Todo</button> 
+
+<ul *ngIf="currentUser?.todo?.length > 0">
+    <li *ngFor="let todo of currentUser.todo; let i = index;">{{ todo }}
+        <button (click)="removeTodo(i)">X</button>
+    </li>
+
+</ul> 
+
+<div *ngIf="currentUser?.todo?.length > 0">
+    <div style="white-space: pre-line;">
+        <input *ngFor="let todo of currentUser.todo; let i = index;" value="{{ todo }}" (keydown.enter)="updateTodo($event.target.value, i)" ng-bind-html="currentUser.todo" />
+    </div>
+</div> 
+ -->
+
+
+ <div class="container-scroller">
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-inline add-items d-flex">
+                                    <input [(ngModel)]="txtSignUpUser" type="text" class="form-control form-control-sm" placeholder="Email" aria-label="Username">
+                                    <button (click)="addUser()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Sign In</button>
+                                </div>
+
+                                <h4 class="card-title">Todo list</h4>
+                                <div class="form-inline add-items d-flex">
+                                    <input type="text" [(ngModel)]="txtTodo" class="form-control todo-list-input" placeholder="What do you need to do today?">
+                                    <button [disabled]="currentUser == null ? 'disabled' : null" (click)="addTodoForUser()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button>
+                                </div>
+                                <form class="forms-sample" *ngIf="currentUser?.todo?.length > 0">
+                                    <div class="form-group row" *ngFor="let todo of currentUser.todo; let i = index;" style="border-bottom: 1px solid #313452; padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+                                        <label for="exampleTextarea1">{{ todo }}</label>
+                                        <textarea class="form-control" rows="1" style="margin-bottom: 5px;" (keydown.enter)="updateTodo($event.target.value, i)">Update Todo here by pressing Enter here.</textarea>
+                                        <button (click)="removeTodo(i)" class="btn btn-light btn-sm">Remove Todo</button>
+                                    </div>
+                                    <hr/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+</div>
